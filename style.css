@@ -1,0 +1,10 @@
+* {
+  text-decoration: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 500px;
+}
