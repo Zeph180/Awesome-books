@@ -1,40 +1,54 @@
-const addBookBtn = document.querySelector('.add-btn');
-const titleInput = document.querySelector('.title');
-const authorInput = document.querySelector('.author').value;
 const bookSection = document.querySelector('.books');
-const books = [
-  {
-    title: 'JavaScript the Good Parts',
-    author: 'Arnica'
-  },
-  {
-    title: 'Atomic Habits',
-    author: 'James Clear'
-  }
-]
+const addBookBtn = document.querySelector('.add-btn');
+const form = document.querySelector('form');
+const books = [];
+const book = { title: '', author: '', id: '' };
 
-const book = {title:'', author:''};
-
-function AddBook(titleInput, authorInput) {
-  book.title = titleInput;
-  book.author = authorInput;
-  books.push(book);
-  console.log(titleInput, authorInput);
+function RemoveBook() {
+  console.log('Btn removed');
+  console.log(books, "books");
 }
 
-addBookBtn.addEventListener('click', AddBook)
-
-books.forEach(book => {
+function AddBook() {
+  const titleInput = document.querySelector('.title').value;
+  const authorInput = document.querySelector('.author-input').value;
+  const remBtns = document.querySelectorAll('.remove-btn');
   const bookCont = document.createElement('article');
-  bookCont.classList.add('book');
-  bookCont.innerHTML = `
-    <p class="book-title">${book.title}</p>
-    <p class="author">${book.author}</p>
-    <button class="remove-btn">Remove</button>
-    <hr>
-  `
-  bookSection.append(bookCont);
-});
 
-// AddBook('hello', 'it');
-console.log(books);
+  const btns = Array.from(remBtns);
+  console.log(btns);
+
+  btns.forEach((btn) => {
+    btn.addEventListener('click', RemoveBook);
+  });
+
+  books.push(book);
+  book.title = titleInput;
+  book.author = authorInput;
+
+  books.forEach((book) => {
+    bookCont.classList.add('book');
+    bookCont.innerHTML = `
+      <p class="book-title">${book.title}</p>
+      <p class="author">${book.author}</p>
+      <button id=${book.id} class="remove-btn" onclick="RemoveBook()">Remove</button>
+      <hr>
+    `;
+    bookSection.append(bookCont);
+  });
+  form.reset();
+}
+
+addBookBtn.addEventListener('click', AddBook);
+
+// const removeButtons = Array.from(buttons);
+// console.log(removeButtons, 'yyy');
+
+// removeButtons.forEach((button, i) => {
+//   function RemoveBook() {
+//     console.log('Btn removed');
+//     removeButtons.filter((removeButtons) => !removeButtons[i]);
+//   }
+
+//   button.addEventListener('click', RemoveBook);
+// });
