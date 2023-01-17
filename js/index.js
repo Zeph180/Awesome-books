@@ -1,52 +1,51 @@
-const bookSection = document.querySelector('.books');
-const form = document.querySelector('form');
-const addBtn = document.querySelector('.add-btn');
+const buttonAdd = document.querySelector('#add');
+const bookTitle = document.querySelector('#title');
+const bookAuthor = document.querySelector('#author');
+const bookDisplay = document.querySelector('#book-section');
 
-const books = [];
+const books = JSON.parse(localStorage.getItem('books')) || [];
 
-function renderBook(book) {
-  const bookCont = document.createElement('div');
-  bookCont.innerHTML = `
-    <p class="book-title">${book.title}</p>
-    <p class="author">${book.author}</p>
-    <button id=${book.id} class="remove-btn" ">Remove</button>
-    <hr>
-  `;
-  bookSection.appendChild(bookCont);
-}
+const addBook = (title, author) => {
+  books.push({ title, author });
+  localStorage.setItem('books', JSON.stringify(books));
+  // eslint-disable-next-line no-use-before-define
+  render();
+};
 
-function removeBook(index) {
-  // books.slice(index, 1);
-  // bookSection.innerHTML = '';
-  // const newBook = [];
-  // books.forEach((book) => renderBook(book));
-  alert('helllo')
-}
+const removeBook = (index) => {
+  books.splice(index, 1);
+  localStorage.setItem('books', JSON.stringify(books));
+  // eslint-disable-next-line no-use-before-define
+  render();
+};
 
-function addBook(title, author) {
-  const book = {
-    title,
-    author,
-    id: crypto.randomUUID(),
-  };
-
-  books.push(book);
-
-  renderBook(book);
-  const remBtns = document.querySelectorAll('.remove-btn');
-  remBtns.forEach((remBtn, index) => {
-    remBtn.addEventListener('click', removeBook(index));
-    console.log(remBtn);
+const render = () => {
+  bookDisplay.innerHTML = '';
+  books.forEach((book, index) => {
+    const div = document.createElement('div');
+    div.innerHTML = `
+            ${book.title}<br>
+            ${book.author}<br>
+            <button class="remove-button" data-index="${index}">Remove</button>
+            <br><br>
+            <hr>
+        `;
+    bookDisplay.appendChild(div);
   });
-}
 
-addBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  const titleInput = document.querySelector('.title').value;
-  const authorInput = document.querySelector('.author-input').value;
+  document.querySelectorAll('.remove-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      removeBook(button.getAttribute('data-index'));
+    });
+  });
+};
 
-  if (titleInput !== '' && authorInput !== '') {
-    addBook(titleInput, authorInput);
-    form.reset();
-  }
+render();
+
+buttonAdd.addEventListener('click', () => {
+  const title = bookTitle.value;
+  const author = bookAuthor.value;
+  addBook(title, author);
+  bookTitle.value = '';
+  bookAuthor.value = '';
 });
