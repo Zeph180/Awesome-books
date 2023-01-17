@@ -4,22 +4,24 @@ const bookAuthor = document.querySelector('#author');
 const bookDisplay = document.querySelector('#book-section');
 
 class Books {
-  constructor(books){
+  constructor(books) {
     this.books = books;
   }
+
   addBook(book) {
     this.books.push(book);
   }
+
   removeBook(index) {
     books.splice(index, 1);
   }
 }
 
 const books = JSON.parse(localStorage.getItem('books')) || [];
-const bookData = new Books(books); 
+const bookData = new Books(books);
 
 const addBook = (title, author) => {
-  const book = {title, author};
+  const book = { title, author };
   bookData.addBook(book);
   localStorage.setItem('books', JSON.stringify(books));
   // eslint-disable-next-line no-use-before-define
@@ -37,7 +39,7 @@ const render = () => {
   bookDisplay.innerHTML = '';
   books.forEach((book, index) => {
     const div = document.createElement('div');
-    div.classList.add('book')
+    div.classList.add('book');
     div.innerHTML = `
             <p>"${book.title}" by ${book.author}</p>
             <button class="remove-button" data-index="${index}">Remove</button>
@@ -57,7 +59,9 @@ render();
 buttonAdd.addEventListener('click', () => {
   const title = bookTitle.value;
   const author = bookAuthor.value;
-  addBook(title, author);
+  if (title !== '' && author !== '') {
+    addBook(title, author);
+  }
   bookTitle.value = '';
   bookAuthor.value = '';
 });
