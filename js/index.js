@@ -1,4 +1,4 @@
-const buttonAdd = document.querySelector('#add');
+const buttonAdd = document.querySelector('#add-btn');
 const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const bookDisplay = document.querySelector('#book-section');
@@ -24,10 +24,9 @@ const render = () => {
   books.forEach((book, index) => {
     const div = document.createElement('div');
     div.innerHTML = `
-            ${book.title}<br>
-            ${book.author}<br>
+            <p>${book.title}</p>
+            <p>${book.author}</p>
             <button class="remove-button" data-index="${index}">Remove</button>
-            <br><br>
             <hr>
         `;
     bookDisplay.appendChild(div);
