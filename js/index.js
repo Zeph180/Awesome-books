@@ -13,7 +13,7 @@ class Books {
   }
 
   removeBook(index) {
-    books.splice(index, 1);
+    this.books.splice(index, 1);
   }
 }
 
