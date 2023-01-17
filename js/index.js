@@ -3,17 +3,31 @@ const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const bookDisplay = document.querySelector('#book-section');
 
+class Books {
+  constructor(books){
+    this.books = books;
+  }
+  addBook(book) {
+    this.books.push(book);
+  }
+  removeBook(index) {
+    books.splice(index, 1);
+  }
+}
+
 const books = JSON.parse(localStorage.getItem('books')) || [];
+const bookData = new Books(books); 
 
 const addBook = (title, author) => {
-  books.push({ title, author });
+  const book = {title, author};
+  bookData.addBook(book);
   localStorage.setItem('books', JSON.stringify(books));
   // eslint-disable-next-line no-use-before-define
   render();
 };
 
 const removeBook = (index) => {
-  books.splice(index, 1);
+  bookData.removeBook(index, 1);
   localStorage.setItem('books', JSON.stringify(books));
   // eslint-disable-next-line no-use-before-define
   render();
@@ -23,11 +37,10 @@ const render = () => {
   bookDisplay.innerHTML = '';
   books.forEach((book, index) => {
     const div = document.createElement('div');
+    div.classList.add('book')
     div.innerHTML = `
-            <p>${book.title}</p>
-            <p>${book.author}</p>
+            <p>"${book.title}" by ${book.author}</p>
             <button class="remove-button" data-index="${index}">Remove</button>
-            <hr>
         `;
     bookDisplay.appendChild(div);
   });
