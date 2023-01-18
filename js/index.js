@@ -3,9 +3,12 @@ const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const bookDisplay = document.querySelector('#book-section');
 const currentDate = document.querySelector('.date');
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const date = new Date();
+const month = months[date.getMonth()];
 
 currentDate.innerHTML = `
-  ${new Date()}
+  ${month} ${date.getDay()} ${date.getFullYear()}, ${date.toLocaleTimeString()} 
 `;
 
 class Books {
