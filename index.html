@@ -13,30 +13,47 @@
   </head>
 
   <body>
+
     <header>
       <nav class="nav">
         <h1 class="web-name">Awesome books</h1>
         <ul class="nav-ul">
-          <li><a href="#">List</a></li>
-          <li class="with-border"><a href="#">Add new</a></li>
-          <li><a href="#">Contact</a></li>
+          <li id="link-list"><a href="#">List</a></li>
+          <li id="link-add-Book" class="with-border"><a href="#add-book">Add new</a></li>
+          <li id="link-contact"><a href="#">Contact</a></li>
         </ul>
       </nav>
       <p class="date"></p>
     </header>
+
     <main>
-      <section class="parent-section">
+      <section id="books-list" class="parent-section">
         <h2>Awesome books</h2>
         <section id="book-section"></section>
       </section>
-      <section class="Add-book">
-        <hr />
+
+      <section class="Add-book hidden" id="add-book">
         <h2>Add a new book</h2>
         <input type="text" name="title" id="title" placeholder="Title" />
         <input type="text" name="Author" placeholder="Author" id="author" />
         <button id="add-btn">Add</button>
       </section>
+
+      <section class="contact hidden" id="contact">
+        <h2>Contact Information</h2>
+        <p>
+          Do you have a question or just want to say "hello"? <br>
+          you can reach out to us!
+          <ul>
+            <li>Our email: zephandsohail@gmail.com</li>
+            <li>Our phone number: +125655844555</li>
+            <li>Our address: Mengo 22, 888, Kampala, Uganda</li>
+          </ul>
+        </p>
+      </section>
+
     </main>
+
     <footer>
       <div class="footer-container">
         <small class="copyright">

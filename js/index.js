@@ -3,9 +3,33 @@ const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const bookDisplay = document.querySelector('#book-section');
 const currentDate = document.querySelector('.date');
+const addBookBtn = document.getElementById('link-add-Book');
+const listBookBtn = document.getElementById('link-list');
+const contactBtn = document.getElementById('link-contact');
+const booksList = document.getElementById('books-list');
+const addBookSec = document.getElementById('add-book');
+const contactSec = document.getElementById('contact');
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const date = new Date();
 const month = months[date.getMonth()];
+
+addBookBtn.addEventListener('click', () => {
+  addBookSec.classList.remove('hidden');
+  booksList.classList.add('hidden');
+  contactSec.classList.add('hidden');
+});
+
+listBookBtn.addEventListener('click', () => {
+  addBookSec.classList.add('hidden');
+  booksList.classList.remove('hidden');
+  contactSec.classList.add('hidden');
+});
+
+contactBtn.addEventListener('click', () => {
+  contactSec.classList.remove('hidden');
+  addBookSec.classList.add('hidden');
+  booksList.classList.add('hidden');
+});
 
 currentDate.innerHTML = `
   ${month} ${date.getDay()} ${date.getFullYear()}, ${date.toLocaleTimeString()} 

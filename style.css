@@ -92,7 +92,7 @@ hr {
   width: 200px;
 }
 
-.Add-book {
+.Add-book,.contact {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -111,7 +111,7 @@ input {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -128,5 +128,14 @@ footer {
 
 .copyright {
   text-align: center;
+  margin-left: 5%;
+}
+
+.hidden {
+  display: none;
+}
+
+.contact ul li {
+  list-style-type: disc;
   margin-left: 5%;
 }
