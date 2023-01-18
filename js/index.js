@@ -2,6 +2,11 @@ const buttonAdd = document.querySelector('#add-btn');
 const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const bookDisplay = document.querySelector('#book-section');
+const currentDate = document.querySelector('.date');
+
+currentDate.innerHTML = `
+  ${new Date()}
+`;
 
 class Books {
   constructor(books) {
