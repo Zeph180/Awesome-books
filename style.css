@@ -92,7 +92,8 @@ hr {
   width: 200px;
 }
 
-.Add-book,.contact {
+.Add-book,
+.contact {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -150,7 +151,7 @@ footer {
     margin-right: 0;
   }
 
-  .nav-ul li{
+  .nav-ul li {
     display: block;
     font-size: 12px;
   }
