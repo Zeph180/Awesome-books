@@ -139,3 +139,27 @@ footer {
   list-style-type: disc;
   margin-left: 5%;
 }
+
+@media screen and (max-width: 768px) {
+  .web-name {
+    font-size: 14px;
+    margin-left: 0;
+  }
+
+  .nav-ul {
+    margin-right: 0;
+  }
+
+  .nav-ul li{
+    display: block;
+    font-size: 12px;
+  }
+
+  .date {
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+}

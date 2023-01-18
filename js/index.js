@@ -97,3 +97,9 @@ buttonAdd.addEventListener('click', () => {
   bookTitle.value = '';
   bookAuthor.value = '';
 });
+
+if (books.length === 0){
+  bookDisplay.innerHTML = `
+    <p>No book added!</p>
+  `
+};
